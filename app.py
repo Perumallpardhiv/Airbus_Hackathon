@@ -23,7 +23,7 @@ def predict():
     
     output_image_path = 'result.jpg'
     for result in results:
-        result.show()  # display to screen
+        # result.show()  # display to screen
         result.save(filename=output_image_path)
 
     return send_file(output_image_path, mimetype='image/jpeg')
