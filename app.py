@@ -17,12 +17,6 @@ def image_to_base64(image_data):
         img.save(buffer, format="PNG")
         base64_str = base64.b64encode(buffer.getvalue()).decode('utf-8')
     return base64_str
-def image_to_base64(image_data):
-    img = Image.fromarray(image_data)
-    with io.BytesIO() as buffer:
-        img.save(buffer, format="PNG")
-        base64_str = base64.b64encode(buffer.getvalue()).decode('utf-8')
-    return base64_str
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -39,22 +33,15 @@ def predict():
     print(results)
     print(results.__len__() , "results found")
     # for result in results:
-    # output_image_path = 'result.jpg'
-    print(results)
-    print(results.__len__() , "results found")
-    # for result in results:
         # result.show()  # display to screen
         # result.save(filename=output_image_path)
-        # result.save(filename=output_image_path)
     
-    base64_str = image_to_base64(results[0].orig_img)
-    print(base64_str)
     base64_str = image_to_base64(results[0].orig_img)
     print(base64_str)
     print("Image converted to base64")
     # print(results)
     # return jsonify({'image': base64_str})
-    return jsonify({'base64': base64_str, 'success': "success"})
+    return jsonify({'success': "success", 'base64': base64_str})
     # return send_file(output_image_path, mimetype='image/jpeg')
 
 @app.route('/')
