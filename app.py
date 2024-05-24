@@ -37,7 +37,8 @@ def predict():
     print("Image converted to base64")
     # print(base64_str)
     # print(results)
-    return jsonify({'image': base64_str})
+    # return jsonify({'image': base64_str})
+    return jsonify({'success': "success"})
     # return send_file(output_image_path, mimetype='image/jpeg')
 
 @app.route('/')
