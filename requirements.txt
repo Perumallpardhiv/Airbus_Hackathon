@@ -2,3 +2,4 @@ flask
 ultralytics
 Pillow
 gunicorn
+gradio
